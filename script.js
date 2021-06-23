@@ -119,7 +119,7 @@ function scoresToDOM() {
 
 // Stop timer, process resules, go to score page
 function checkTime() {
-  console.log(timePlayed);
+  //console.log(timePlayed);
   if (playerGuessArray.length == questionAmount) {
     clearInterval(timer);
     //console.log('player guess array', playerGuessArray);
@@ -178,10 +178,10 @@ function getRandomInt(max) {
 function createEquations() {
   // Randomly choose how many correct equations there should be
   const correctEquations = getRandomInt(questionAmount);
-  console.log('Correct equations:', correctEquations);
+  //console.log('Correct equations:', correctEquations);
   // Set amount of wrong equations
   const wrongEquations = questionAmount - correctEquations;
-  console.log('wrong equatinos', wrongEquations);
+  //console.log('wrong equatinos', wrongEquations);
   // Loop through, multiply random numbers up to 9, push to array
   for (let i = 0; i < correctEquations; i++) {
     firstNumber = getRandomInt(9);
@@ -246,6 +246,7 @@ function populateGamePage() {
 
 // displays 3/2/1/Go!
 function countdownStart() {
+  // refactored to setInterval, not as fragile. 
   let count = 3;
   countdown.textContent = count;
   const timeCountdown = setInterval(() => {
@@ -276,12 +277,11 @@ function countdownStart() {
 function showCountdown() {
   countdownPage.hidden = false;
   splashPage.hidden = true;
-  countdownStart();
   populateGamePage();
+  countdownStart();
   // setTimeout(() => {
   //   showGamePage();
   // }, 4000);
-
 }
 // Get the value from selected radio button
 function getRadioValue() {
@@ -298,7 +298,7 @@ function getRadioValue() {
 function selectQuestionAmount(e) {
   e.preventDefault();
   questionAmount = getRadioValue();
-  console.log('question amount', questionAmount);
+  //console.log('question amount', questionAmount);
   if (questionAmount) {
     showCountdown();
   }
